@@ -202,7 +202,7 @@ class RangeWidget(QtWidgets.QWidget):
                 if self.orientation == QtCore.Qt.Horizontal:
                     new = self.minimum() + ((self.maximum() - self.minimum()) * event.x()) / self.width()
                 else:
-                    new = self.minimum() + ((self.maximum() - self.minimum()) * event.y()) / self.height()
+                    new = self.maximum() - ((self.maximum() - self.minimum()) * event.y()) / self.height()
                 self.setValue(int(new))
                 event.accept()
             # Use repaint rather than calling the super mousePressEvent.
@@ -213,7 +213,7 @@ class RangeWidget(QtWidgets.QWidget):
             if self.orientation == QtCore.Qt.Horizontal:
                 new = self.minimum() + ((self.maximum() - self.minimum()) * event.x()) / self.width()
             else:
-                new = self.minimum() + ((self.maximum() - self.minimum()) * event.y()) / self.height()
+                new = self.maximum() - ((self.maximum() - self.minimum()) * event.y()) / self.height()
             self.setValue(int(new))
             event.accept()
             QtWidgets.QSlider.repaint(self)
